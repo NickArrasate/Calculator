@@ -20,45 +20,32 @@ var divide = function(number1, number2) {
 
 $(document).ready(function() {
 
+
+
  $("form#add").submit(function(event){
-	var number1 = parseInt($("#add1").val());
-	var number2 = parseInt($("#add2").val());
-	var result = add(number1, number2);
-	$("#addoutput").text(result);
+
+	var primary = $("input:radio[name=optradio]:checked").val();
+	var number1 = parseInt($("#num1").val());
+	var number2 = parseInt($("#num2").val());
+
+	if (primary === "add") {
+		var result = add(number1, number2);
+		$("#addoutput").text(result);
+} else if (primary === "subtract") {
+		var result = subtract(number1, number2);
+	 	$("#addoutput").text(result);
+} else if (primary === "divide") {
+		var result = divide(number1, number2);
+		$("#addoutput").text(result);
+} else if (primary === "multiply") {
+		var result = multiply(number1, number2);
+ 		$("#addoutput").text(result);
+}
 
 	event.preventDefault();
+});
 
-	});
 
-	$("form#subtract").submit(function(event){
- 	var number1 = parseInt($("#sub1").val());
- 	var number2 = parseInt($("#sub2").val());
- 	var result = subtract(number1, number2);
- 	$("#suboutput").text(result);
-
- 	event.preventDefault();
-
- 	});
-
-	$("form#multiply").submit(function(event){
- 	var number1 = parseInt($("#mult1").val());
- 	var number2 = parseInt($("#mult2").val());
- 	var result = multiply(number1, number2);
- 	$("#multoutput").text(result);
-
- 	event.preventDefault();
-
- 	});
-
-	$("form#divide").submit(function(event){
- 	var number1 = parseInt($("#div1").val());
- 	var number2 = parseInt($("#div2").val());
- 	var result = divide(number1, number2);
- 	$("#divoutput").text(result);
-
- 	event.preventDefault();
-
- 	});
 });
 
 /*===BMI Functions
